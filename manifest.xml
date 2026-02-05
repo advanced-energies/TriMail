@@ -9,9 +9,9 @@
     <DefaultLocale>fr-FR</DefaultLocale>
     <DisplayName DefaultValue="TriMail"/>
     <Description DefaultValue="Exemple de panneau de tâches"/>
-    <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-    <SupportUrl DefaultValue="https://localhost:3000/help"/>
+    <IconUrl DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
+    <HighResolutionIconUrl DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-80.png"/>
+    <SupportUrl DefaultValue="https://advanced-energies.github.io/TriMail/help"/>
 
     <Hosts>
         <Host Name="Mailbox"/>
@@ -29,7 +29,7 @@
     <FormSettings>
         <Form xsi:type="ItemRead">
         <DesktopSettings>
-            <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+            <SourceLocation DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html"/>
             <RequestedHeight>600</RequestedHeight>
         </DesktopSettings>
         </Form>
@@ -68,10 +68,11 @@
 
         <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
         <bt:Images>
-            <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+            <bt:Image id="Icon.32" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
         </bt:Images>
         <bt:Urls>
-            <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+            <bt:Url id="Taskpane.Url" DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html" />
+            <bt:Url id="functionFile" DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html" />
         </bt:Urls>
         <bt:ShortStrings>
             <bt:String id="Group.Label" DefaultValue="Mon groupe"/>
