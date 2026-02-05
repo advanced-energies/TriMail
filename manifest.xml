@@ -3,15 +3,15 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:type="MailApp">
 
-    <Id>00000000-0000-0000-0000-000000000000</Id>
+    <Id>7b5e8652-3294-4c53-9201-949e29547690</Id>
     <Version>1.0.0.0</Version>
-    <ProviderName>TonNom</ProviderName>
+    <ProviderName>Advanced Energies</ProviderName>
     <DefaultLocale>fr-FR</DefaultLocale>
     <DisplayName DefaultValue="TriMail"/>
-    <Description DefaultValue="Exemple de panneau de tâches"/>
+    <Description DefaultValue="Tri automatique des emails par projet"/>
+    
     <IconUrl DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
     <HighResolutionIconUrl DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-80.png"/>
-    <SupportUrl DefaultValue="https://advanced-energies.github.io/TriMail/help"/>
 
     <Hosts>
         <Host Name="Mailbox"/>
@@ -19,65 +19,71 @@
 
     <Requirements>
         <Sets DefaultMinVersion="1.8">
-        <Set Name="Mailbox"/>
+            <Set Name="Mailbox"/>
         </Sets>
     </Requirements>
 
-    <!-- (Optionnel) Ancien modèle d'activation par FormSettings.
-        Tu peux le laisser si tu veux que le taskpane s'ouvre aussi
-        via le volet "Lire l'élément" sans passer par un bouton. -->
     <FormSettings>
         <Form xsi:type="ItemRead">
-        <DesktopSettings>
-            <SourceLocation DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html"/>
-            <RequestedHeight>600</RequestedHeight>
-        </DesktopSettings>
+            <DesktopSettings>
+                <SourceLocation DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html"/>
+                <RequestedHeight>600</RequestedHeight>
+            </DesktopSettings>
         </Form>
     </FormSettings>
 
-    <!-- Permission requise pour déplacer des mails via Graph côté add-in -->
     <Permissions>ReadWriteMailbox</Permissions>
 
-    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" Version="1.0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
         <Requirements>
-        <bt:Sets DefaultMinVersion="1.8" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
-            <bt:Set Name="Mailbox"/>
-        </bt:Sets>
+            <bt:Sets DefaultMinVersion="1.8" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+                <bt:Set Name="Mailbox"/>
+            </bt:Sets>
         </Requirements>
 
         <Hosts>
-        <Host xsi:type="MailHost">
-            <DesktopFormFactor>
-            <!-- PAS de FunctionFile en ShowTaskpane pur -->
-
-            <ExtensionPoint xsi:type="MessageReadCommandSurface">
-                <OfficeTab id="TabDefault">
-                <Group id="MyGroup" label.resid="Group.Label" icon="Icon.32">
-                    <Control xsi:type="Button" id="OpenTaskPaneButton" label="Ouvrir le panneau" icon="Icon.32">
-                        <Action xsi:type="ShowTaskpane">
-                            <SourceLocation resid="Taskpane.Url" />
-                        </Action>
-                    </Control>
-                </Group>
-                </OfficeTab>
-            </ExtensionPoint>
-
-            </DesktopFormFactor>
-        </Host>
+            <Host xsi:type="MailHost">
+                <DesktopFormFactor>
+                    <ExtensionPoint xsi:type="MessageReadCommandSurface">
+                        <OfficeTab id="TabDefault">
+                            <Group id="Group.TriMail">
+                                <Label resid="Group.Label" />
+                                <Control xsi:type="Button" id="Btn.OpenTaskpane">
+                                    <Label resid="Button.Label" />
+                                    <Supertip>
+                                        <Title resid="Button.Label" />
+                                        <Description resid="Button.Tooltip" />
+                                    </Supertip>
+                                    <Icon>
+                                        <bt:Image size="16" resid="Icon.16" />
+                                        <bt:Image size="32" resid="Icon.32" />
+                                        <bt:Image size="80" resid="Icon.80" />
+                                    </Icon>
+                                    <Action xsi:type="ShowTaskpane">
+                                        <SourceLocation resid="Taskpane.Url" />
+                                    </Action>
+                                </Control>
+                            </Group>
+                        </OfficeTab>
+                    </ExtensionPoint>
+                </DesktopFormFactor>
+            </Host>
         </Hosts>
 
         <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
-        <bt:Images>
-            <bt:Image id="Icon.32" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
-        </bt:Images>
-        <bt:Urls>
-            <bt:Url id="Taskpane.Url" DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html" />
-            <bt:Url id="functionFile" DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html" />
-        </bt:Urls>
-        <bt:ShortStrings>
-            <bt:String id="Group.Label" DefaultValue="Mon groupe"/>
-        </bt:ShortStrings>
-        <bt:LongStrings/>
+            <bt:Images>
+                <bt:Image id="Icon.16" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-16.png"/>
+                <bt:Image id="Icon.32" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
+                <bt:Image id="Icon.80" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-80.png"/>
+            </bt:Images>
+            <bt:Urls>
+                <bt:Url id="Taskpane.Url" DefaultValue="https://advanced-energies.github.io/TriMail/taskpane.html" />
+            </bt:Urls>
+            <bt:Strings>
+                <bt:String id="Group.Label" DefaultValue="Tri Automatique"/>
+                <bt:String id="Button.Label" DefaultValue="Ouvrir TriMail"/>
+                <bt:String id="Button.Tooltip" DefaultValue="Ouvre le panneau de tri des emails"/>
+            </bt:Strings>
         </Resources>
     </VersionOverrides>
 </OfficeApp>
