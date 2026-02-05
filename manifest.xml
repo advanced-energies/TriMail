@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
            xsi:type="MailApp">
-
     <Id>7b5e8652-3294-4c53-9201-949e29547690</Id>
     <Version>1.0.0.0</Version>
     <ProviderName>Advanced Energies</ProviderName>
     <DefaultLocale>fr-FR</DefaultLocale>
     <DisplayName DefaultValue="TriMail"/>
     <Description DefaultValue="Tri automatique des emails par projet"/>
-    
     <IconUrl DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
     <HighResolutionIconUrl DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-80.png"/>
-
     <Hosts>
         <Host Name="Mailbox"/>
     </Hosts>
-
     <Requirements>
         <Sets DefaultMinVersion="1.8">
             <Set Name="Mailbox"/>
         </Sets>
     </Requirements>
-
     <FormSettings>
         <Form xsi:type="ItemRead">
             <DesktopSettings>
@@ -31,12 +28,10 @@
             </DesktopSettings>
         </Form>
     </FormSettings>
-
     <Permissions>ReadWriteMailbox</Permissions>
-
     <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
         <Requirements>
-            <bt:Sets DefaultMinVersion="1.8" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+            <bt:Sets DefaultMinVersion="1.8">
                 <bt:Set Name="Mailbox"/>
             </bt:Sets>
         </Requirements>
@@ -69,7 +64,7 @@
                 </DesktopFormFactor>
             </Host>
         </Hosts>
-        <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+        <Resources>
             <bt:Images>
                 <bt:Image id="Icon.16" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-16.png"/>
                 <bt:Image id="Icon.32" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-32.png"/>
