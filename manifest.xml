@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+
+    <Id>00000000-0000-0000-0000-000000000000</Id>
+    <Version>1.0.0.0</Version>
+    <ProviderName>TonNom</ProviderName>
+    <DefaultLocale>fr-FR</DefaultLocale>
+    <DisplayName DefaultValue="TriMail"/>
+    <Description DefaultValue="Exemple de panneau de tâches"/>
+    <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+    <SupportUrl DefaultValue="https://localhost:3000/help"/>
+
+    <Hosts>
+        <Host Name="Mailbox"/>
+    </Hosts>
+
+    <Requirements>
+        <Sets DefaultMinVersion="1.8">
+        <Set Name="Mailbox"/>
+        </Sets>
+    </Requirements>
+
+    <!-- (Optionnel) Ancien modèle d'activation par FormSettings.
+        Tu peux le laisser si tu veux que le taskpane s'ouvre aussi
+        via le volet "Lire l'élément" sans passer par un bouton. -->
+    <FormSettings>
+        <Form xsi:type="ItemRead">
+        <DesktopSettings>
+            <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+            <RequestedHeight>600</RequestedHeight>
+        </DesktopSettings>
+        </Form>
+    </FormSettings>
+
+    <!-- Permission requise pour déplacer des mails via Graph côté add-in -->
+    <Permissions>ReadWriteMailbox</Permissions>
+
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" Version="1.0">
+        <Requirements>
+        <bt:Sets DefaultMinVersion="1.8" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+            <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+        </Requirements>
+
+        <Hosts>
+        <Host xsi:type="MailHost">
+            <DesktopFormFactor>
+            <!-- PAS de FunctionFile en ShowTaskpane pur -->
+
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+                <OfficeTab id="TabDefault">
+                <Group id="MyGroup" label.resid="Group.Label" icon="Icon.32">
+                    <Control xsi:type="Button" id="OpenTaskPaneButton" label="Ouvrir le panneau" icon="Icon.32">
+                        <Action xsi:type="ShowTaskpane">
+                            <SourceLocation resid="Taskpane.Url" />
+                        </Action>
+                    </Control>
+                </Group>
+                </OfficeTab>
+            </ExtensionPoint>
+
+            </DesktopFormFactor>
+        </Host>
+        </Hosts>
+
+        <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
+        <bt:Images>
+            <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        </bt:Images>
+        <bt:Urls>
+            <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+            <bt:String id="Group.Label" DefaultValue="Mon groupe"/>
+        </bt:ShortStrings>
+        <bt:LongStrings/>
+        </Resources>
+    </VersionOverrides>
+</OfficeApp>
