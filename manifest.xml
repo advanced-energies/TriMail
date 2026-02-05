@@ -69,7 +69,6 @@
                 </DesktopFormFactor>
             </Host>
         </Hosts>
-
         <Resources xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0">
             <bt:Images>
                 <bt:Image id="Icon.16" DefaultValue="https://advanced-energies.github.io/TriMail/assets/icon-16.png"/>
